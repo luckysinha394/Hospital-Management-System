@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blacklisted Doctors</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        header { background-color: #0D0221; color: #f4f4f8; height: 70px; font-size: 40px; padding: 20px; font-weight: 600; }
+        #details { display: flex; flex-direction: column; }
+        #table { display: flex; align-items: center; }
+        span { display: flex; justify-content: center; align-items: center; }
+        h4 { font-size: 30px; }
+        #login { padding: 40px; margin: 30px; background-color: #ffffff; border-radius: 20px; width: 1400px; }
+        a { text-decoration: none; }
+
+        .heading-row {
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 2px solid #ddd;
+            background-color: #E6ECF5;
+            font-size: 28px;
+            font-weight: 600;
+            color: #0D0221;
+        }
+    </style>
+</head>
+
+<body style="background-color:#f4f4f8;">
+
+<header>HEALTHWORLD HOSPITALS</header>
+
+<div style="display:flex; justify-content:center; align-items:center; flex-direction:column;">
+
+    <div id="login">
+        <h4 style="font-size: 40px; text-align: center;">BLACKLISTED DOCTORS</h4>
+        <ul id="details" style="margin: 15px; list-style-type: none;">
+
+            <li class="heading-row">
+                <h4 style="width: 200px; text-align: center;">Doctor ID</h4>
+                <h4 style="width: 900px; text-align: center;">Name</h4>
+                <h4 style="width: 200px; text-align: center;"></h4>
+            </li>
+
+            {% for b in blacklisted %}
+            <li style="padding: 15px; border-bottom: 1px solid #eee;">
+                <div id="table">
+                    <span style="font-size:30px; width:200px; color:#0D0221;">{{ b.doctor_ID }}</span>
+                    <span style="font-size:30px; width:900px; color:#0D0221;">{{ b.name }}</span>
+
+                    <div style="width:200px; display:flex; justify-content:center;">
+                        <a href="/admin/unblacklist/{{ b.doctor_ID }}"
+                           style="
+                                display:flex;
+                                align-items:center;
+                                justify-content:center;
+                                font-size:20px;
+                                height:40px;
+                                padding:5px 12px;
+                                border-radius:5px;
+                                color:white;
+                                background-color:#198754;
+                                text-decoration:none;
+                           ">
+                           UNBLACKLIST
+                        </a>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
+

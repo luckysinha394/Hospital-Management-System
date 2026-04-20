@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        header { background-color: #0D0221; color: #f4f4f8; height: 70px; font-size: 40px; padding: 20px; font-weight: 600; }
+        #details { display: flex; flex-direction: column; }
+        #table { display: flex; align-items: center; }
+        span { display: flex; justify-content: center; }
+        h4 { font-size: 30px; }
+        #login { padding: 40px; margin: 30px; background-color: #ffffff; border-radius: 20px; width: 1400px; }
+        a { text-decoration: none; }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            height: 40px;
+            padding: 5px 12px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .heading-row {
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 2px solid #ddd;
+            background-color: #E6ECF5;
+            font-size: 28px;
+            font-weight: 600;
+            color: #0D0221;
+        }
+    </style>
+</head>
+<body style="background-color: #f4f4f8;">
+
+<header>HEALTHWORLD HOSPITALS</header>
+
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+    <div id="login">
+        <h4 style="font-size: 40px; text-align: center;">DOCTORS LIST</h4>
+        <ul id="details" style="margin: 15px; list-style-type: none;">
+            <li class="heading-row">
+                <h4 style="width: 100px; text-align: center;">ID</h4>
+                <h4 style="width: 410px; text-align: center;">Name</h4>
+                <h4 style="width: 300px; text-align: center;">Specialisation</h4>
+                <h4 style="width: 200px; text-align: center;">Password</h4>
+                <h4 style="width: 400px; text-align: center;"></h4>
+            </li>
+
+            {% for doctor in doctors %}
+            <li style="padding: 15px; border-bottom: 1px solid #eee;">
+                <div id="table">
+                    <span style="font-size: 30px; width: 100px; color: #0D0221;">{{ doctor.doctor_ID }}</span>
+                    <span style="font-size: 30px; width: 410px; color: #0D0221;">{{ doctor.name }}</span>
+                    <span style="font-size: 30px; width: 300px; color: #0D0221;">{{ doctor.specialisation }}</span>
+                    <span style="font-size: 30px; width: 200px; color: #0D0221;">{{ doctor.password }}</span>
+
+                    <div style="width: 400px; display:flex; justify-content: center;">
+                        <a href="/admin/view/doctor/{{ doctor.doctor_ID }}" class="btn" style="background-color:#0066cc; margin-right:5px;">VIEW</a>
+                        <a href="/admin/delete/{{ doctor.doctor_ID }}" class="btn" style="background-color:#9E2A2B; margin-right:5px;">DELETE</a>
+                        <a href="/admin/blacklist/{{ doctor.doctor_ID }}" class="btn" style="background-color:#36151E; margin-right:5px;">BLACKLIST</a>
+                        <a href="/admin/update/{{ doctor.doctor_ID }}" class="btn" style="background-color:#27476e;">UPDATE</a>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div style="display: flex; justify-content: center;">
+            <a href="/admin/dashboard/add_doctor" class="btn" style="background-color:#00916e; font-size: 30px; padding: 10px 20px; margin-top: 10px; margin-right: 10px;">ADD DOCTOR</a>
+            <a href="/admin/view/blacklist" class="btn" style="background-color:#36151E; font-size: 30px; padding: 10px 20px; margin-top: 10px;">VIEW BLACKLISTED</a>
+        </div>
+
+    </div>
+
+    <div id="login">
+        <h4 style="font-size: 40px; text-align: center;">PATIENTS LIST</h4>
+        <ul id="details" style="margin: 15px; list-style-type: none;">
+            <li class="heading-row">
+                <h4 style="width: 100px; text-align: center;">ID</h4>
+                <h4 style="width: 900px; text-align: center;">Name</h4>
+                <h4 style="width: 100px; text-align: center;">Age</h4>
+                <h4 style="width: 300px; text-align: center;">Phone No</h4>
+                <h4 style="width: 200px; text-align: center;"></h4>
+            </li>
+
+            {% for patient in patients %}
+            <li style="padding: 15px; border-bottom: 1px solid #eee;">
+                <div id="table">
+                    <span style="font-size: 30px; width: 100px; color: #0D0221;">{{ patient.patient_ID }}</span>
+                    <span style="font-size: 30px; width: 900px; color: #0D0221;">{{ patient.name }}</span>
+                    <span style="font-size: 30px; width: 100px; color: #0D0221;">{{ patient.age }}</span>
+                    <span style="font-size: 30px; width: 300px; color: #0D0221;">{{ patient.contact }}</span>
+
+                    <div style="width:200px; display:flex; justify-content:center;">
+                        <a href="/admin/view/patient/{{ patient.patient_ID }}" class="btn" style="background-color:#0066cc;">VIEW</a>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div id="login">
+        <h4 style="font-size: 40px; text-align: center;">APPOINTMENTS LIST</h4>
+        <ul id="details" style="list-style-type: none;">
+            <li class="heading-row">
+                <h4 style="width: 250px; text-align: center;">Appointment ID</h4>
+                <h4 style="width: 250px; text-align: center;">Patient ID</h4>
+                <h4 style="width: 250px; text-align: center;">Doctor ID</h4>
+                <h4 style="width: 200px; text-align: center;">Date</h4>
+                <h4 style="width: 200px; text-align: center;">Time</h4>
+                <h4 style="width: 200px; text-align: center;">Status</h4>
+            </li>
+
+            {% for appt in appointments %}
+            <li style="padding: 15px; font-size: 30px; border-bottom: 1px solid #eee;">
+                <div id="table">
+                    <span style="font-size: 30px; width: 250px; color: #0D0221;">{{ appt.appointment_ID }}</span>
+                    <span style="font-size: 30px; width: 250px; color: #0D0221;">{{ appt.patient_ID }}</span>
+                    <span style="font-size: 30px; width:250px; color: #0D0221;">{{ appt.doctor_ID }}</span>
+                    <span style="font-size: 30px; width: 200px; color: #0D0221;">{{ appt.date }}</span>
+                    <span style="font-size: 30px; width: 200px; color: #0D0221;">{{ appt.time }}</span>
+                    <span style="font-size: 30px; width: 200px; color: #0D0221;">{{ appt.status }}</span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Details</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        header { background-color: #0D0221; color: #f4f4f8; height: 70px; font-size: 40px; padding: 20px; font-weight: 600; }
+        #container { background-color: #ffffff; width: 900px; padding: 40px; margin: 40px auto; border-radius: 20px; }
+        h3 { font-size: 35px; color: #0D0221; }
+        p { font-size: 28px; }
+    </style>
+</head>
+<body style="background-color:#f4f4f8;">
+
+    <header>HEALTHWORLD HOSPITALS</header>
+
+    <div id="container">
+        <h3>Appointment Booking</h3>
+        <p><b>Doctor:</b> {{ doctor.name }}</p>
+        <p><b>Specialisation:</b> {{ doctor.specialisation }}</p>
+        <p><b>Available:</b> {{ availability }}</p>
+
+        <form action="/patient/book_appointment/{{ patient_id }}/{{ doctor.doctor_ID }}" method="POST" style="margin-top:20px;">
+            <input type="text" name="day" placeholder="Enter Day (e.g., Mon)" style="padding:10px; font-size:20px; width:300px;">
+            <input type="text" name="time" placeholder="Enter Time (e.g., 3:00 PM)" style="padding:10px; font-size:20px; width:300px;">
+            <button type="submit" style="padding:10px 20px; font-size:20px; background-color:#00916e; color:white; border:none; cursor:pointer;">Confirm</button>
+        </form>
+    </div>
+</body>
+</html>

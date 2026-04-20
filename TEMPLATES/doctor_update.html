@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Doctor</title>
+    <style>
+        *{ padding: 0; margin: 0; }
+        #a{ height: 50px; width: 400px; margin: 20px; font-size: larger; background-color: #efefef; border: 0px; border-radius: 10px; padding: 8px; }
+        #a1{ height: 60px; width: 400px; background-color: darkblue; font-size: 25px; color: white; font-weight: 300; margin: 20px; border-radius: 10px; }
+        #person{ color: white; margin: 20px; display: flex; justify-content: space-around; border-radius: 7px; }
+        #details{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        #login{ background-color: #E4DFDA; width: 555px; padding: 40px; margin: 30px; border-radius: 20px; display: flex; flex-direction: column; align-items: center; }
+    </style>
+    <header style="background-color: #0D0221; color: #f4f4f8; height: 70px; font-size: 40px; padding: 20px; font-weight: 600; padding-bottom: 0px;">
+        HEALTHWORLD HOSPITALS
+    </header>
+</head>
+<body style="background-color: #f4f4f8;">
+    <div style="display: flex; justify-content: center;">
+        <div id="login" style="background-color: rgb(255, 255, 255); width: 555px; padding: 40px; margin: 30px;">
+            <div id="person">
+                <h2 style="color: #0D0221; font-size: 40px;">Update Details</h2>
+            </div>
+            <form action="/admin/update/{{doctor.doctor_ID}}" method="POST">
+                <div id="details">
+                    <input id="a" name="name" type="text" value="{{ doctor.name }}" readonly>
+                    <input id="a" name="specialisation" type="text" value="{{ doctor.specialisation }}">
+                    <input id="a" name="contact" type="text" value="{{ doctor.contact }}">
+                    <input id="a" name="password" type="text" value="{{ doctor.password }}">
+                    <input id="a1" type="submit" value="UPDATE">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

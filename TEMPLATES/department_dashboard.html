@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Dashboard</title>
+
+    <style>
+        * { margin: 0; padding: 0; }
+        a { margin: 10px; }
+        #details { display: flex; flex-direction: column; }
+        #table { display: flex; }
+        span { display: flex; justify-content: center; }
+        h4 { font-size: 30px; }
+    </style>
+</head>
+
+<body style="background-color: #f4f4f8;">
+
+    <header style="background-color: #0D0221; color: #f4f4f8; height: 70px; font-size: 40px; padding: 20px; font-weight: 600; padding-bottom: 0px;">
+        HEALTHWORLD HOSPITALS
+    </header>
+
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div id="login" style="width: 1400px; padding: 40px; margin: 30px;">
+
+            <!-- Heading: Department Name -->
+            <h2 style="font-size: 45px; color: #0D0221; margin-bottom: 20px;">
+                {{ department.name }}
+            </h2>
+
+            <!-- Doctors List -->
+            <h4 style="font-size: 40px;">DOCTORS IN THIS DEPARTMENT</h4>
+
+            <ul id="details" style="margin: 15px; list-style-type: none;">
+                <!-- Table Heading Row -->
+                <li style="display: flex; justify-content: space-around; padding: 15px; width: 1200px;">
+                    <h4 style="width: 150px; text-align: center;">Doctor ID</h4>
+                    <h4 style="width: 300px; text-align: center;">Name</h4>
+                    <h4 style="width: 300px; text-align: center;">Specialization</h4>
+                    <h4 style="width: 400px; text-align: center;">Actions</h4>
+                </li>
+
+                {% for doc in doctors %}
+                <li style="padding: 15px;">
+                    <div id="table" style="display: flex; align-items: center;">
+
+                        <!-- Doctor ID -->
+                        <span style="font-size: 30px; width: 150px; color: #0D0221;">
+                            {{ doc.doctor_ID }}
+                        </span>
+
+                        <!-- Doctor Name -->
+                        <span style="font-size: 30px; width: 300px; color: #0D0221;">
+                            {{ doc.name }}
+                        </span>
+
+                        <!-- Doctor Specialization -->
+                        <span style="font-size: 30px; width: 300px; color: #0D0221;">
+                            {{ doc.specialization }}
+                        </span>
+
+                        <!-- View / Book Buttons -->
+                        <div style="width: 400px; text-align: center;">
+
+                            <!-- View Doctor Profile -->
+                            <a href="/patient/view-doctor/{{ doc.doctor_ID }}"
+                               style="background-color: #27476E; color: #ffffff; padding: 5px; height: 40px; font-size: 30px;">
+                                VIEW
+                            </a>
+
+                            <!-- Book Appointment -->
+                            <a href="/patient/book-appointment/{{ doc.doctor_ID }}"
+                               style="background-color: #00916e; color: #ffffff; padding: 5px; height: 40px; font-size: 30px;">
+                                BOOK
+                            </a>
+
+                        </div>
+
+                    </div>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        header { background-color: #0D0221; color: #f4f4f8; height: 70px; font-size: 40px; padding: 20px; font-weight: 600; }
+        #details { display: flex; flex-direction: column; }
+        #table { display: flex; align-items: center; }
+        span { display: flex; justify-content: center; }
+        h4 { font-size: 30px; }
+        #login { padding: 40px; margin: 30px; background-color: #ffffff; border-radius: 20px; }
+        a { text-decoration: none; }
+
+        .heading-row {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 2px solid #ddd;
+            background-color: #E6ECF5;
+            font-size: 28px;
+            font-weight: 600;
+            color: #0D0221;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body style="background-color: #f4f4f8;">
+
+<header>HEALTHWORLD HOSPITALS</header>
+
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+    <div id="login" style="width:1360px;">
+        <h4 style="font-size: 40px; text-align: center;">WELCOME DR. {{ doctorn }}</h4><br>
+
+        <h4 style="font-size: 35px;">SET AVAILABILITY</h4><br>
+
+        <form method="POST" action="{{ url_for('doctor_dashboard', doctor_id=doctor.doctor_ID) }}">
+            <label style="font-size: 25px;">Availability (Example: Mon-Fri 10AM - 5PM) :</label><br><br>
+            <input type="text" name="days" style="font-size: 25px; width: 500px;" required><br><br>
+
+            <button type="submit" style="background-color:#0D0221;color:white;font-size:25px;padding:10px 20px;border-radius:10px;">
+                UPDATE
+            </button>
+        </form>
+
+        {% if doctor.availability %}
+        <p style="font-size: 25px; margin-top: 20px;">Current Availability : {{ doctor.availability }}</p>
+        {% endif %}
+    </div>
+
+    <div id="login">
+        <h4 style="font-size: 40px; text-align: center;">YOUR APPOINTMENTS</h4>
+        
+        <ul id="details" style="margin: 15px; list-style-type: none;">
+            <li class="heading-row">
+                <h4 style="width: 250px; text-align: center;">Appointment ID</h4>
+                <h4 style="width: 250px; text-align: center;">Patient Name</h4>
+                <h4 style="width: 150px; text-align: center;">Date</h4>
+                <h4 style="width: 150px; text-align: center;">Time</h4>
+                <h4 style="width: 200px; text-align: center;">Status</h4>
+                <h4 style="width: 300px; text-align: center;">Actions</h4>
+            </li>
+
+            {% for appt in appointments %}
+            <li style="padding: 15px; border-bottom: 1px solid #eee;">
+                <div id="table">
+                    <span style="font-size: 25px; width: 250px; color: #0D0221;">{{ appt.appointment_ID }}</span>
+                    <span style="font-size: 25px; width: 250px; color: #0D0221;">{{ appt.patient_name }}</span>
+                    <span style="font-size: 25px; width: 150px; color: #0D0221;">{{ appt.date }}</span>
+                    <span style="font-size: 25px; width: 150px; color: #0D0221;">{{ appt.time }}</span>
+                    <span style="font-size: 25px; width: 200px; color: #0D0221;">{{ appt.status }}</span>
+
+                    <div style="width: 300px; display:flex; justify-content: center;">
+                        <a href="/doctor/dashboard/viewpatient/{{ appt.patient_ID }}" style="background-color:#27476e;color:white;padding:5px;font-size:20px;margin-right:5px;border-radius:5px;">VIEW</a>
+                        <a href="/doctor/dashboard/appointment/complete/{{ appt.appointment_ID }}" style="background-color:#00916e;color:white;padding:5px;font-size:20px;margin-right:5px;border-radius:5px;">COMPLETE</a>
+                        <a href="/doctor/dashboard/appointment/cancel/{{ appt.appointment_ID }}" style="background-color:#9E2A2B;color:white;padding:5px;font-size:20px;border-radius:5px;">CANCEL</a>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>
+
+
+
+

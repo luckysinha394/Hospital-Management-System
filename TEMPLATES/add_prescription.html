@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Prescription</title>
+
+    <style>
+        * { margin:0; padding:0; }
+        header { background-color:#0D0221; color:#f4f4f8; height:70px; font-size:40px; padding:20px; font-weight:600; }
+        #holder { padding:40px; margin:30px; background-color:#ffffff; border-radius:20px; }
+        h4 { font-size:40px; text-align:center; margin-bottom:20px; color:#0D0221; }
+        li { font-size:30px; margin:15px; color:#0D0221; }
+        input { width:100%; font-size:28px; padding:15px; margin-top:15px; border-radius:10px; border:1px solid #ccc; }
+        button { background-color:#00916e; color:#ffffff; padding:10px; font-size:30px; border-radius:10px; border:none; margin-top:20px; cursor:pointer; }
+    </style>
+</head>
+
+<body style="background-color:#f4f4f8;">
+
+<header>HEALTHWORLD HOSPITALS</header>
+
+<div style="display:flex; flex-direction:column; align-items:center;">
+
+    <div id="holder" style="width:1200px;">
+        <h4>PRESCRIPTION</h4>
+
+        <ul style="list-style-type:none;">
+            <li><strong>Doctor:</strong> {{ doctor.name }}</li>
+            <li><strong>Specialisation:</strong> {{ doctor.specialisation }}</li>
+            <li><strong>Patient:</strong> {{ patient.name }}</li>
+            <li><strong>Patient ID:</strong> {{ patient.patient_ID }}</li>
+            <li><strong>Date:</strong> {{ appointment.date }}</li>
+            <li><strong>Time:</strong> {{ appointment.time }}</li>
+        </ul>
+
+        <form method="POST">
+            <input type="text" name="symptoms" placeholder="Enter Symptoms">
+            <input type="text" name="diagnosis" placeholder="Enter Diagnosis">
+            <input type="text" name="prescription" placeholder="Enter Medicines & Dosage">
+            <input type="text" name="notes" placeholder="Enter Notes">
+
+            <button type="submit">SAVE PRESCRIPTION</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

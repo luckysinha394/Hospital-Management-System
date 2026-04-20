@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Success</title>
+    <style>
+        * { padding: 0; margin: 0; }
+        #person { color: white; margin: 20px; display: flex; justify-content: space-around; border-radius: 7px; }
+        #details { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        #login { background-color: #E4DFDA; width: 555px; padding: 40px; margin: 30px; border-radius: 20px; display: flex; flex-direction: column; align-items: center; }
+        header { background-color: #0D0221; color: #f4f4f8; height: 70px; font-size: 40px; padding: 20px; font-weight: 600; }
+    </style>
+</head>
+<body style="background-color: #f4f4f8;">
+
+    <header>HEALTHWORLD HOSPITALS</header>
+
+    <div style="display: flex; justify-content: center;">
+        <div id="login" style="background-color: #ffffff; width: 555px; padding: 40px; margin: 30px;">
+            <div id="person">
+                <h2 style="color: #0D0221; font-size: 40px;">Update Successful</h2>
+            </div>
+            <div id="details">
+                <h3 style="color: #0D0221; font-size: 28px; text-align: center; margin-top: 20px;">
+                    Patient <b>{{ name }}</b>'s profile updated successfully.
+                </h3>
+                <a href="/patient/dashboard/{{patient_ID}}" style="text-decoration: none; font-size: 25px; color: darkblue;">Go back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        *{ padding: 0cap; margin: 0px; }
+        #person{ color: white; margin: 20px; display: flex; flex-direction: column; justify-content: space-around; border-radius: 7px; }
+        a{ width: 250px; background-color: darkblue; padding: 5px; display: flex; margin: 10px; justify-content: center; align-items: center; height: 80px; border-radius: 7px; color: #E4DFDA; font-size: 30px; text-decoration: none; }
+        #login{ background-color: #E4DFDA; width: 555px; padding: 40px; display: flex; align-items: center; flex-direction: column; margin: 30px; border-radius: 20px; }
+    </style>
+    <header style="background-color: #0D0221; color: #f4f4f8; height: 70px; font-size: 40px; padding: 20px; font-weight: 600; padding-bottom: 0px;">
+        HEALTHWORLD HOSPITALS
+    </header>
+</head>
+<body style="background-color: #f4f4f8;">
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div id="login" style="background-color: rgb(255, 255, 255); width: 555px; padding: 40px; margin: 30px;">
+            <div id="person">
+                <a href="/admin/login">Login as Admin</a>
+                <a href="/doctor/login">Login as Doctor</a>
+                <a href="/patient/login">Login as Patient</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

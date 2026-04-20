@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ department.name }}</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        header { background-color: #0D0221; color: #f4f4f8; height: 70px; font-size: 40px; padding: 20px; font-weight: 600; }
+        #container { background-color: #ffffff; width: 1100px; padding: 40px; margin: 40px auto; border-radius: 20px; flex-direction: column; display: flex; flex-wrap: wrap;}
+        .doctor-card { background-color: #E4DFDA; padding: 20px; margin: 20px; border-radius: 15px; height: 260px; width: 460px; display: flex; flex-wrap: wrap;}
+        .doctor-info { font-size: 30px; color: #0D0221; margin: 8px; }
+    </style>
+</head>
+<body style="background-color: #f4f4f8;">
+
+    <header>HEALTHWORLD HOSPITALS</header>
+
+    <div id="container">
+        <h1 style="font-size: 50px; color: #0D0221; text-align: center; margin-bottom: 40px;">{{ department.name }}</h1>
+        <h2 style="font-size: 40px; color: #0D0221; margin-bottom: 20px;">Available Doctors</h2>
+
+        {% if doctors %}
+            <div style="display: flex; flex-wrap: wrap;">
+                {% for doc in doctors %}
+                    <div class="doctor-card" >
+                        <div class="doctor-info"><strong>Name:</strong> {{ doc.name }}</div>
+                        <div class="doctor-info"><strong>Specialisation:</strong> {{ doc.specialisation }}</div>
+                        <div class="doctor-info"><strong>Contact:</strong> {{ doc.contact }}</div>
+                        <div class="doctor-info"><strong>Availability:</strong> {{ doc.availability }}</div>
+
+                        <a href="/patient/book_appointment/{{ patient_ID }}/{{ doc.doctor_ID }}"
+                        style="font-size:25px;background-color:#27476E;color:white; padding:10px 20px;border-radius:10px;text-decoration:none; display:inline-block;margin-top:10px;">
+                            Book Appointment
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h3 style="font-size:30px;color:#0D0221;">No doctors available in this department currently.</h3>
+        {% endif %}
+    </div>
+</body>
+</html>

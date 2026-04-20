@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blacklist Success</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        #person { margin: 20px; display: flex; justify-content: space-around; }
+        #login { background-color: #E4DFDA; width: 555px; padding: 40px; margin: 30px; border-radius: 20px; display: flex; flex-direction: column; align-items: center; }
+        header { background-color: #0D0221; color: #f4f4f8; height: 70px; font-size: 40px; padding: 20px; font-weight: 600; }
+    </style>
+</head>
+<body style="background-color: #f4f4f8;">
+    <header>HEALTHWORLD HOSPITALS</header>
+    <div style="display: flex; justify-content: center;">
+        <div id="login" style="background-color: #ffffff;">
+            <div id="person">
+                <h2 style="color: #0D0221; font-size: 40px;">Admin Panel</h2>
+            </div>
+            <p style="font-size: 55px; color: #00916e;">Blacklist Updated</p>
+            <p>Doctor <b>{{ name }}</b> has been added to the blacklist.</p>
+            
+            <a href="/admin/dashboard" style="margin-top: 20px; font-size: 20px; color: darkblue;">
+                Go back to Dashboard
+            </a>
+        </div>
+    </div>
+</body>
+</html>

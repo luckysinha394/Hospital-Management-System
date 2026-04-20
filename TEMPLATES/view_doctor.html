@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Doctor</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        header { background-color: #0D0221; color: #f4f4f8; height: 70px; font-size: 40px; padding: 20px; font-weight: 600; }
+        #container { display: flex; flex-direction: column; align-items: center; margin-top: 30px; }
+        #card { background-color: #ffffff; padding: 30px; width: 1400px; border-radius: 20px; margin-bottom: 25px; }
+        h2 { font-size: 36px; margin-bottom: 10px; }
+        p { font-size: 28px; margin-bottom: 5px; }
+        #details { display: flex; flex-direction: column; }
+        #table { display: flex; align-items: center; }
+        span { display: flex; justify-content: center; }
+        h4 { font-size: 26px; text-align: center; }
+        .btn { display:flex; align-items:center; justify-content:center; font-size:22px; padding:8px 18px; background-color:#27476e; color:white; border-radius:8px; width:200px; text-decoration:none; }
+
+        .heading-row {
+            padding:15px;
+            display:flex;
+            justify-content:space-around;
+            border-bottom:2px solid #ddd;
+            background-color:#E6ECF5;
+            font-size:26px;
+            font-weight:600;
+            color:#0D0221;
+        }
+        .row {
+            padding:15px;
+            display:flex;
+            justify-content:space-around;
+            border-bottom:1px solid #eee;
+        }
+    </style>
+</head>
+<body style="background-color: #f4f4f8;">
+
+<header>Doctor Details</header>
+
+<div id="container">
+
+    <a href="/admin/dashboard" class="btn" style="margin-bottom:25px;">Back to Dashboard</a>
+
+    <div id="card">
+        <h2>Doctor Info</h2>
+        <p><b>Name:</b> {{ doctor.name }}</p>
+        <p><b>Doctor ID:</b> {{ doctor.doctor_ID }}</p>
+        <p><b>Specialisation:</b> {{ doctor.specialisation }}</p>
+        <p><b>Contact:</b> {{ doctor.contact }}</p>
+        <p><b>Availability:</b> {{ doctor.availability or "Not Set" }}</p>
+    </div>
+
+    <div id="card">
+        <h2>Upcoming Appointments</h2>
+        <ul id="details" style="list-style-type:none;">
+        {% if upcoming_appointments %}
+            <li class="heading-row">
+                <h4 style="width:260px;">Appointment ID</h4>
+                <h4 style="width:250px;">Patient ID</h4>
+                <h4 style="width:500px;">Patient Name</h4>
+                <h4 style="width:230px;">Date</h4>
+                <h4 style="width:230px;">Time</h4>
+                <h4 style="width:230px;">Status</h4>
+            </li>
+            {% for a in upcoming_appointments %}
+            <li class="row">
+                <span style="width:260px; font-size:28px;">{{ a.appointment_ID }}</span>
+                <span style="width:250px; font-size:28px;">{{ a.patient_ID }}</span>
+                <span style="width:500px; font-size:28px;">{{ a.patient_name }}</span>
+                <span style="width:230px; font-size:28px;">{{ a.date }}</span>
+                <span style="width:230px; font-size:28px;">{{ a.time }}</span>
+                <span style="width:230px; font-size:28px;">{{ a.status }}</span>
+            </li>
+            {% endfor %}
+        {% else %}
+            <li style="padding:20px; font-size:28px; text-align:center;">No upcoming appointments available.</li>
+        {% endif %}
+        </ul>
+    </div>
+
+    <div id="card">
+        <h2>Previous Appointments</h2>
+        <ul id="details" style="list-style-type:none;">
+        {% if previous_appointments %}
+            <li class="heading-row">
+                <h4 style="width:260px;">Appointment ID</h4>
+                <h4 style="width:250px;">Patient ID</h4>
+                <h4 style="width:500px;">Patient Name</h4>
+                <h4 style="width:230px;">Date</h4>
+                <h4 style="width:230px;">Time</h4>
+                <h4 style="width:230px;">Status</h4>
+            </li>
+            {% for a in previous_appointments %}
+            <li class="row">
+                <span style="width:260px; font-size:28px;">{{ a.appointment_ID }}</span>
+                <span style="width:250px; font-size:28px;">{{ a.patient_ID }}</span>
+                <span style="width:500px; font-size:28px;">{{ a.patient_name }}</span>
+                <span style="width:230px; font-size:28px;">{{ a.date }}</span>
+                <span style="width:230px; font-size:28px;">{{ a.time }}</span>
+                <span style="width:230px; font-size:28px;">{{ a.status }}</span>
+            </li>
+            {% endfor %}
+        {% else %}
+            <li style="padding:20px; font-size:28px; text-align:center;">No previous appointment history.</li>
+        {% endif %}
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>
+
+
+

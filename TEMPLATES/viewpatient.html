@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Patient</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        header { background-color: #0D0221; color: #f4f4f8; height: 70px; font-size: 40px; padding: 20px; font-weight: 600; }
+        #holder { padding: 40px; margin: 30px; background-color: #ffffff; border-radius: 20px; }
+        h4 { font-size: 36px; text-align: center; color:#0D0221; margin-bottom: 20px; padding: 10px; background-color:#E6ECF5; border-bottom: 2px solid #ddd; }
+        li { font-size: 30px; margin: 15px; color:#0D0221; }
+        a { text-decoration: none; }
+        .btn {
+            background-color: #00916e;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 30px;
+            margin-top: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body style="background-color:#f4f4f8;">
+
+<header>HEALTHWORLD HOSPITALS</header>
+
+<div style="display:flex; justify-content:center; align-items:center; flex-direction:column;">
+    
+    <div id="holder" style="width: 1200px;">
+        <h4>PATIENT DETAILS</h4>
+        <ul style="list-style-type:none;">
+            <li><strong>ID:</strong> {{ patient.patient_ID }}</li>
+            <li><strong>Name:</strong> {{ patient.name }}</li>
+            <li><strong>Age:</strong> {{ patient.age }}</li>
+            <li><strong>Contact:</strong> {{ patient.contact_info }}</li>
+        </ul>
+    </div>
+
+    <div id="holder" style="width: 1200px;">
+        <h4>APPOINTMENT DETAILS</h4>
+        <ul style="list-style-type:none;">
+            <li><strong>Appointment ID:</strong> {{ appointment.appointment_ID }}</li>
+            <li><strong>Date:</strong> {{ appointment.date }}</li>
+            <li><strong>Time:</strong> {{ appointment.time }}</li>
+            <li><strong>Status:</strong> {{ appointment.status }}</li>
+        </ul>
+
+        {% if not treatment %}
+            <a class="btn" href="/doctor/add_prescription/{{ appointment.appointment_ID }}">
+                CREATE PRESCRIPTION
+            </a>
+        {% else %}
+            <a class="btn" href="/patient/prescription/{{ appointment.appointment_ID }}">
+                VIEW PRESCRIPTION
+            </a>
+        {% endif %}
+    </div>
+
+</div>
+</body>
+</html>
+
+
+
+

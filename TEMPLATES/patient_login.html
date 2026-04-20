@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Login</title>
+    <style>
+        * { padding: 0; margin: 0; }
+        #a { height: 50px; width: 400px; margin: 20px; font-size: larger; background-color: #efefef; border: 0; border-radius: 10px; padding: 8px; }
+        #a1 { height: 60px; width: 400px; background-color: darkblue; font-size: 25px; color: white; font-weight: 300; margin: 20px; border-radius: 10px; border: none; cursor: pointer; }
+        #login { background-color: #fff; width: 555px; padding: 40px; margin: 30px; border-radius: 20px; }
+    </style>
+    <header style="background-color:#0D0221;color:#f4f4f8;height:70px; font-size:40px;padding:20px;font-weight:600;">
+        HEALTHWORLD HOSPITALS
+    </header>
+</head>
+<body style="background-color:#f4f4f8;">
+    <div style="display:flex; justify-content:center;">
+        <div id="login">
+            <h2 style="color:#0D0221;font-size:40px;text-align:center;margin-bottom:20px;">Patient Login</h2>
+            <form action="/patient/login" method="POST">
+                <div style="display:flex;flex-direction:column;align-items:center;">
+                    <input id="a" name="name" type="text" placeholder="Enter your Name" required>
+                    <input id="a" name="password" type="password" placeholder="Enter Password" required>
+                    <button type="submit" id="a1">Submit</button>
+                </div>
+            </form>
+            <a href="/patient/register" style="text-decoration:none;margin-top:10px;display:block;color:#0D0221;text-align:center;">
+                Not Registered? Click to Register.
+            </a>
+            {% if error %}
+            <p style="color:red;font-size:20px;text-align:center;margin-top:10px;">{{ error }}! Enter Credentials Again.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
